@@ -34,6 +34,12 @@ const SidebarContainer = styled(Box)`
   border-right: 1px solid #ddd;
   padding: 16px;
   overflow-y: auto;
+  position: fixed;
+  left: 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  margin-top: 100px;
+  margin-left: 10px;
 `;
 
 const Sidebar = ({ onSelectConversation }) => {

@@ -12,7 +12,7 @@ const Welcome = ({ onAddConversation }) => {
       </StyledTypography>
       {isAdmin && (
         <StyledButton onClick={onAddConversation}>
-          Create New Conversation
+          Create Conversation
         </StyledButton>
       )}
       <StyledTypography className="ConversationTypo">

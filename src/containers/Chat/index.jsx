@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import ReactMarkdown from 'react-markdown';
 import {
   CssBaseline,
   Box,
@@ -24,9 +26,8 @@ const OuterContainer = styled(Box)`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  height: 100vh;
+  height: 100%;
   background-color: #e0e0e0;
-  padding-top: 200px;
 `;
 
 const ChatWrapper = styled(Box)`
@@ -35,6 +36,7 @@ const ChatWrapper = styled(Box)`
   display: flex;
   flex-direction: column;
   background-color: white;
+  margin: 100px 0;
   border-radius: 12px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   overflow: hidden;
@@ -80,6 +82,20 @@ const ChatInputContainer = styled(Box)`
 const InputField = styled(TextField)`
   flex: 1;
   margin-right: 8px;
+`;
+
+const SidebarRight = styled(Box)`
+  width: 300px;
+  background: #ffffff;
+  border-right: 1px solid #ddd;
+  padding: 16px;
+  overflow-y: auto;
+  position: fixed;
+  right: 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  margin-top: 100px;
+  margin-right: 20px;
 `;
 
 const ChatPage = ({ conversationId }) => {
@@ -156,15 +172,18 @@ const ChatPage = ({ conversationId }) => {
       <CssBaseline />
       <Header />
       <Sidebar onSelectConversation={setActiveConversationId} />
-      <ChatWrapper>
-        <Typography
-          variant="h4"
-          align="center"
-          gutterBottom
-          sx={{ padding: 2 }}
-        >
-          {conversation ? conversation.title : 'Chat'}
+      <SidebarRight>
+        <Typography variant="h6" gutterBottom>
+          Chatting
         </Typography>
+        {conversation && (
+          <Typography variant="body1">
+            {' '}
+            {conversation ? conversation.title : 'Chat'}
+          </Typography>
+        )}
+      </SidebarRight>
+      <ChatWrapper>
         <ChatContainer>
           {loading ? (
             <Typography>Loading...</Typography>
@@ -175,7 +194,7 @@ const ChatPage = ({ conversationId }) => {
                   <Typography variant="body1">{chat.userPrompt}</Typography>
                 </UserMessage>
                 <BotMessage>
-                  <Typography variant="body1">{chat.aiResponse}</Typography>
+                  <ReactMarkdown>{chat.aiResponse}</ReactMarkdown>
                 </BotMessage>
               </React.Fragment>
             ))

@@ -13,7 +13,7 @@ export const StyledGrid = styled(Grid).attrs({
 export const StyledBackgroundGrid = styled(Grid)`
   && {
     /* background-image: url(https://source.unsplash.com/random?wallpapers); */
-    background-image: url(https://idc.edu/wp-content/uploads/2018/02/8-Ways-to-Learn-English-Faster.jpg);
+    background-image: url(https://photo-cms-vovworld.zadn.vn/w500/Uploaded/vovworld/qosrgt/2017_05_26/tsctngay26thang5-01_KXTS.jpg);
     background-repeat: no-repeat;
     background-color: lightblue;
     background-size: cover;
